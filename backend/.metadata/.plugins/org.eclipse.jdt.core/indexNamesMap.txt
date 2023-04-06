@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+file:/D:/USUARIO%20NO%20BORRAR/Desktop/angular-sprintboot-udemy/backend/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+meta_index
