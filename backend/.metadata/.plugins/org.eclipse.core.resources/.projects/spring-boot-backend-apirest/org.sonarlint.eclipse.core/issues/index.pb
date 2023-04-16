@@ -21,21 +21,7 @@ Ysrc/main/java/com/bolsadeideas/springboot/backend/apirest/mappers/ClienteMapper
 Tsrc/main/java/com/bolsadeideas/springboot/backend/apirest/models/entity/Cliente.java,5\b\5bd7a03a00624d48e1525f56897d3a8836661ebc
 M
 src/main/resources/import.sql,e\4\e4d34ebb6ad755f76364185c00cacdd5aafaec67
-Å
-Qsrc/main/java/com/bolsadeideas/springboot/backend/apirest/models/entity/Role.java,3\0\309367db904c4ce0fac3b4597e3626c76685af24
-Ñ
-Tsrc/main/java/com/bolsadeideas/springboot/backend/apirest/models/entity/Usuario.java,6\e\6e1d84d0d4ba780126cd7b606b86ef2f9ee87bc8
-Ö
-Usrc/main/java/com/bolsadeideas/springboot/backend/apirest/models/dao/IUsuarioDao.java,4\6\466330d35efa1a7d0ad0f2b57c513977056a4af2
-ç
-]src/main/java/com/bolsadeideas/springboot/backend/apirest/models/services/UsuarioService.java,8\b\8b443f2d589682a70c1c21f31b217f88de9df01b
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-à
-Xsrc/main/java/com/bolsadeideas/springboot/backend/apirest/auth/SpringSecurityConfig.java,f\6\f6358cac9523cb19f48618d2ece94ee7d791c458
-ç
-]src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/AuthorizationServerConfig.java,5\9\599a41511db588e76405dce3116d364083b19300
-à
-Xsrc/main/java/com/bolsadeideas/springboot/backend/apirest/auth/ResourceServerConfig.java,2\a\2adc730158bc5d54650e5c892b7bcb01275423c6
 í
 bsrc/main/java/com/bolsadeideas/springboot/backend/apirest/SpringBootBackendApirestApplication.java,7\9\797a629273e0d2868b96a271f80134a4ecdd7dc5
