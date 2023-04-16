@@ -1,0 +1,40 @@
+<div class="abrir-modal animacion fadeIn" *ngIf="modalService.modal">
+<div  class="modal" tabindex="-1" style="display:block;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{titulo}}</h5>
+        <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class=container>
+          <div class="row">
+            <div class="col-sm">
+              <ul class="list-group text-dark" *ngIf="cliente">
+                <li class="list-group-item active mt-3">{{cliente.nombre}}</li>
+                <li class="list-group-item mt-3">{{cliente.apellido}}</li>
+                <li class="list-group-item mt-3">{{cliente.email}}</li>
+                <li class="list-group-item mt-3">{{cliente.fecha | date:"fullDate"}}</li>
+                <li class="list-group-item mt-3">{{cliente.region.nombre}}</li>
+              </ul>
+              <div class="input-group mt-3">
+                <input (change)="seleccionarFoto($event)" type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" >
+                <button (click)="subirFoto()" class="btn btn-success" type="button" id="inputGroupFileAddon04" [disabled]="!fotoSeleccionada">Subir</button>
+              </div>
+              <div *ngIf="progreso>0" style="height:40px;" class="progress mt-3" role="progressbar" aria-label="Success example" attr.aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar bg-success" [ngStyle]="{width:progreso+'%'}">{{progreso}}%</div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <img *ngIf="cliente?.foto" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}" class="img-thumbnail rounded">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -12,6 +12,7 @@ public class ClienteMappersImpl implements ClienteMappers{
 		clienteActual.setNombre(cliente.getNombre());
 		clienteActual.setApellido(cliente.getApellido());
 		clienteActual.setEmail(cliente.getEmail());
+		clienteActual.setRegion(cliente.getRegion());
 		return clienteActual;
 	}
 

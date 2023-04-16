@@ -1,0 +1,78 @@
+
+Š
+java:S2293O"YReplace the type specification in this constructor call with the diamond operator ("<>").(şàßïÿÿÿÿÿH¹RMINORZ
+CODE_SMELL
+…
+java:S2293Q"YReplace the type specification in this constructor call with the diamond operator ("<>").(Î†Â‚H»RMINORZ
+CODE_SMELL
+z
+java:S1192J"FDefine a constant instead of duplicating this literal "error" 5 times.(ÕÓçòûÿÿÿÿH½RCRITICALZ
+CODE_SMELL
+†
+java:S2293›"YReplace the type specification in this constructor call with the diamond operator ("<>").(À”¨âHÃRMINORZ
+CODE_SMELL
+U
+java:S1452n"&Remove usage of generic wildcard type.(Å¡ÖÖHÅRCRITICALZ
+CODE_SMELL
+…
+java:S2293Š"YReplace the type specification in this constructor call with the diamond operator ("<>").(·°åYHÆRMINORZ
+CODE_SMELL
+
+java:S2293Á"YReplace the type specification in this constructor call with the diamond operator ("<>").(Äå¨Ğ8ˆøÕ˜ö0HÈRMINORZ
+CODE_SMELL
+~
+java:S6204v"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹HÊRMAJORZ
+CODE_SMELL
+Š
+java:S2293^"YReplace the type specification in this constructor call with the diamond operator ("<>").(®©ÎÒûÿÿÿÿHËRMINORZ
+CODE_SMELL
+[
+java:S1452Ÿ"&Remove usage of generic wildcard type.(à¿×ÿûÿÿÿÿHÍRCRITICALZ
+CODE_SMELL
+‹
+java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ü½¥ÿÿÿÿÿHÎRMINORZ
+CODE_SMELL
+U
+java:S1452C"&Remove usage of generic wildcard type.(§óóÑHĞRCRITICALZ
+CODE_SMELL
+x
+java:S1192I"IDefine a constant instead of duplicating this literal "mensaje" 11 times.(¯×î»HÑRCRITICALZ
+CODE_SMELL
+„
+java:S2293j"YReplace the type specification in this constructor call with the diamond operator ("<>").(·°åYHİRMINORZ
+CODE_SMELL
+…
+java:S2293³"YReplace the type specification in this constructor call with the diamond operator ("<>").(·°åYHßRMINORZ
+CODE_SMELL
+q
+java:S2259À"EA "NullPointerException" could be thrown; "recurso" is nullable here.(éıÔ8É€×˜ö0HáRMAJORZBUG
+Z
+java:S1452U"&Remove usage of generic wildcard type.(Ì¦é’ûÿÿÿÿHæRCRITICALZ
+CODE_SMELL
+Š
+java:S2293}"YReplace the type specification in this constructor call with the diamond operator ("<>").(şàßïÿÿÿÿÿHçRMINORZ
+CODE_SMELL
+V
+java:S1452"&Remove usage of generic wildcard type.(ˆŸ‚»HéRCRITICALZ
+CODE_SMELL
+Š
+java:S2293x"YReplace the type specification in this constructor call with the diamond operator ("<>").(®©ÎÒûÿÿÿÿHêRMINORZ
+CODE_SMELL
+Š
+java:S2293e"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ü½¥ÿÿÿÿÿHìRMINORZ
+CODE_SMELL
+Š
+java:S2293K"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ü½¥ÿÿÿÿÿHîRMINORZ
+CODE_SMELL
+‹
+java:S2293†"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ü½¥ÿÿÿÿÿHğRMINORZ
+CODE_SMELL
+w
+java:S1192h"HDefine a constant instead of duplicating this literal "cliente" 3 times.(Á³Ó÷HòRCRITICALZ
+CODE_SMELL
+‹
+java:S2293˜"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ü½¥ÿÿÿÿÿHöRMINORZ
+CODE_SMELL
+~
+java:S6204\"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹HøRMAJORZ
+CODE_SMELL

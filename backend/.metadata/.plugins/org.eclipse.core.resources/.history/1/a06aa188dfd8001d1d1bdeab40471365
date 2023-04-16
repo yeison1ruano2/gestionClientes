@@ -1,0 +1,10 @@
+package com.bolsadeideas.springboot.backend.apirest.models.entity;
+
+import java.io.Serializable;
+
+@Entity
+public class Role implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+}

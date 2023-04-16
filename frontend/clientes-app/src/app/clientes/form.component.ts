@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as moment from 'moment';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { Region } from './region';
 
 @Component({
   selector: 'app-form',
@@ -19,6 +20,7 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
 export class FormComponent implements OnInit {
 
   public cliente:Cliente=new Cliente();
+  regiones!:Region[];
   public titulo:string="Crear Cliente";
   public errores:string[]=[];
   public miDatepick:any;
@@ -31,6 +33,11 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarCliente();
+    this.cargarRegiones();
+  }
+
+  cargarRegiones():void{
+    this.clienteService.getRegiones().subscribe(regiones=>this.regiones=regiones);
   }
 
 
@@ -75,6 +82,13 @@ export class FormComponent implements OnInit {
         this.errores=err.error.errors as string[];
       }
     )
+  }
+
+  compararRegion(o1:Region,o2:Region):boolean{
+    if(o1===undefined && o2===undefined){
+      return true;
+    }
+    return o1==null || o2==null? false: o1.id===o2.id;
   }
 
 }

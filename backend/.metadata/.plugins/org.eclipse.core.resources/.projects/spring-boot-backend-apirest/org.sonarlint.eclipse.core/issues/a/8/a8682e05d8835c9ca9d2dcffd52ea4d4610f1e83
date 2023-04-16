@@ -1,0 +1,19 @@
+
+U
+java:S2629"$Invoke method(s) only conditionally.(µ”¦íıÿÿÿÿHşRMAJORZ
+CODE_SMELL
+’
+java:S11923"WUse already-defined constant 'DIRECTORIO_UPLOAD' instead of duplicating its value here.(ìÑÔûÿÿÿÿ8Êª˜ö0HÿRCRITICALZ
+CODE_SMELL
+k	java:S8996";Do something with the "boolean" value returned by "delete".(‰àúûÿÿÿÿ8Êª˜ö0H€RMINORZBUG
+†
+java:S40426"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(‰àúûÿÿÿÿ8Êª˜ö0HRMAJORZ
+CODE_SMELL
+\
+java:S2629+"$Invoke method(s) only conditionally.(®¼íÆüÿÿÿÿ8Ô²¢˜ö0H‚RMAJORZ
+CODE_SMELL
+}
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ï¥§¦ÿÿÿÿÿ8ÍË•˜ö0HƒRMINORZ
+CODE_SMELL
+ƒ
+java:S2259)"RA "NullPointerException" could be thrown; "getOriginalFilename()" can return null.(‰åÿ¿üÿÿÿÿ8Ô²¢˜ö0H†RMAJORZBUG

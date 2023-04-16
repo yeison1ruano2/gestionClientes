@@ -1,10 +1,11 @@
 import  swal  from 'sweetalert2';
-import { HttpClient, HttpHeaders, } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable,tap,throwError} from 'rxjs';
 import { Cliente } from '../clientes/cliente';
 import { Router } from '@angular/router';
 import { DatePipe, formatDate } from '@angular/common';
+import { Region } from '../clientes/region';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class ClienteService {
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http:HttpClient,private router:Router) { }
+
+  getRegiones():Observable<Region[]>{
+    return this.http.get<Region[]>(`${this.urlEndpoint}/regiones`);
+  }
 
   getClientes(page:number):Observable<any>{
     return this.http.get<Cliente[]>(`${this.urlEndpoint}/page/${page}`).pipe(
@@ -78,4 +83,16 @@ export class ClienteService {
       })
     )
   }
+
+  subirFoto(archivo:File, id:any) :Observable<HttpEvent<{}>>{
+    let formData = new FormData();
+    formData.append("archivo",archivo);
+    formData.append("id",id);
+    const req = new HttpRequest('POST',`${this.urlEndpoint}/upload`,formData,{
+      reportProgress:true
+    });
+    return this.http.request(req);
+  }
+
+
 }

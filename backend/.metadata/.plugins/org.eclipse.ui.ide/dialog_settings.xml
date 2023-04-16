@@ -34,6 +34,7 @@
 		<item value="org.eclipse.wst.web_ui.feature:3.28.0.v202211200019"/>
 		<item value="org.eclipse.wst.xml_ui.feature:3.28.0.v202211200019"/>
 		<item value="org.jboss.tools.m2e.wro4j.feature:1.2.0.202209071019"/>
+		<item value="org.sonarlint.eclipse.feature:7.9.0.66038"/>
 		<item value="org.sonatype.m2e.egit.feature:0.17.0.202209271423"/>
 	</list>
 	<section name="NewWizardAction">

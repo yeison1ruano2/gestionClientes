@@ -1,0 +1,19 @@
+package com.bolsadeideas.springboot.backend.apirest.models.entity;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="regiones")
+public class Region implements Serializable{
+	
+	private Long id;
+	private String nombre;
+
+	private static final long serialVersionUID = 1L;
+	
+	
+	
+}

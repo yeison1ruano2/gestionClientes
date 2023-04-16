@@ -1,0 +1,12 @@
+package com.bolsadeideas.springboot.backend.apirest.models.entity;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Usuario implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+}
