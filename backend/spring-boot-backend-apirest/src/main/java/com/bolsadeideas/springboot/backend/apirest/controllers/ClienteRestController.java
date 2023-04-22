@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,27 +43,29 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 @CrossOrigin(origins= {"http://localhost:4200"})
 public class ClienteRestController {
-	
+
 	@Autowired
 	private IClienteService clienteService;
-	
+
 	@Autowired
 	private ClienteMappers clienteMappers;
-	
+
 	@Autowired
 	private IUploadFileService uploadService;
-	
+
 	@GetMapping("/clientes")
 	public List<Cliente> index(){
 		return clienteService.findAll();
 	}
-	
+
 	@GetMapping("/clientes/page/{page}")
 	public Page<Cliente> index(@PathVariable Integer page){
 		Pageable pageable=PageRequest.of(page, 4);
 		return clienteService.findAll(pageable);
 	}
-	
+
+	@SuppressWarnings("null")
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		Cliente cliente=null;
@@ -80,7 +83,9 @@ public class ClienteRestController {
 		}
 		return new ResponseEntity<Cliente>(cliente,HttpStatus.OK);
 	}
-	
+
+	@SuppressWarnings("null")
+	@Secured("ROLE_ADMIN")
 	@PostMapping("/clientes")
 	public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result) {
 		Cliente clienteNuevo=null;
@@ -102,15 +107,15 @@ public class ClienteRestController {
 		}
 		response.put("mensaje", "El cliente ha sido creado con éxito");
 		response.put("cliente", clienteNuevo);
-		
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
 	}
-	
+
+	@SuppressWarnings("null")
+	@Secured("ROLE_ADMIN")
 	@PutMapping("/clientes/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente, BindingResult result, @PathVariable Long id) {
 		Map<String,Object> response=new HashMap<>();
 		Cliente clienteActual=clienteService.findById(id);
-		
 		if(result.hasErrors()) {
 			List<String> errors = result.getFieldErrors()
 					.stream()
@@ -119,13 +124,13 @@ public class ClienteRestController {
 			response.put("errors", errors);
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.BAD_REQUEST);
 		}
-		
+
 		if(clienteActual==null) {
 			response.put("mensaje","Error: No se pudo editar,el cliente ID: ".concat(id.toString().concat(" no existe en la base de datos")));
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		Cliente clienteActualizado=clienteMappers.updateCliente(cliente, clienteActual);
-		
+
 		try {
 			clienteActualizado=clienteService.save(clienteActualizado);
 		} catch (DataAccessException e) {
@@ -137,7 +142,9 @@ public class ClienteRestController {
 		response.put("cliente", clienteActualizado);
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
 	}
-	
+
+	@SuppressWarnings("null")
+	@Secured("ROLE_ADMIN")
 	@DeleteMapping("/clientes/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		Map<String,Object> response=new HashMap<>();
@@ -155,6 +162,7 @@ public class ClienteRestController {
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
 	}
 	
+	@Secured({"ROLE_ADMIN","ROLE_USER"})
 	@PostMapping("/clientes/upload")
 	public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile archivo,@RequestParam("id") Long id) {
 		Map<String,Object> response=new HashMap<>();
@@ -170,7 +178,7 @@ public class ClienteRestController {
 			}
 			String nombreFotoAnterior=cliente.getFoto();
 			uploadService.eliminar(nombreFotoAnterior);
-			
+
 			cliente.setFoto(nombreArchivo);
 			clienteService.save(cliente);
 			response.put("cliente", cliente);
@@ -178,7 +186,9 @@ public class ClienteRestController {
 		}
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
 	}
+
 	
+	@SuppressWarnings("null")
 	@GetMapping("/uploads/img/{nombreFoto:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String nombreFoto) {
 		Resource recurso=null;
@@ -187,15 +197,15 @@ public class ClienteRestController {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		
+
 		HttpHeaders cabecera=new HttpHeaders();
 		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + recurso.getFilename() + "\"");
 		return new ResponseEntity<Resource>(recurso,cabecera,HttpStatus.OK);
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/clientes/regiones")
 	public List<Region> listarRegiones(){
 		return clienteService.findAllRegiones();
 	}
-
 }

@@ -17,9 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UploadFileServiceImpl implements IUploadFileService{
-	
+
 	private final Logger log =LoggerFactory.getLogger(UploadFileServiceImpl.class);
-	
+
 	private final static String DIRECTORIO_UPLOAD="uploads";
 
 	@Override
@@ -27,7 +27,7 @@ public class UploadFileServiceImpl implements IUploadFileService{
 		Path rutaImagen=getPath(nombreFoto);
 		log.info(rutaImagen.toString());
 		Resource recurso=new UrlResource(rutaImagen.toUri());
-		
+
 		if(!recurso.exists() && !recurso.isReadable()) {
 			rutaImagen=Paths.get("src/main/resource/static/images").resolve("notuser.png").toAbsolutePath();
 			recurso=new UrlResource(rutaImagen.toUri());
@@ -36,6 +36,7 @@ public class UploadFileServiceImpl implements IUploadFileService{
 		return recurso;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public String copiar(MultipartFile archivo) throws IOException {
 		String nombreArchivo=UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace("", "");
