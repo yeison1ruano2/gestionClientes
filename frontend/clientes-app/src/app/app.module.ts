@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DirectivaComponent } from './directiva/directiva.component';
 import { ClienteService } from './services/cliente.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './clientes/form.component';
 
@@ -19,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
+import { LoginComponent } from './usuarios/login.component';
+import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
+import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
 
 registerLocaleData(localEs, 'es');
 
@@ -31,7 +34,8 @@ registerLocaleData(localEs, 'es');
     DirectivaComponent,
     FormComponent,
     PaginatorComponent,
-    DetalleComponent
+    DetalleComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,
@@ -43,7 +47,11 @@ registerLocaleData(localEs, 'es');
     MatDatepickerModule,
     MatMomentDateModule
   ],
-  providers: [ClienteService,{provide: LOCALE_ID, useValue: 'es' }],
+  providers: [ClienteService,
+    {provide: LOCALE_ID, useValue: 'es' },
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi:true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

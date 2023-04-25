@@ -20,7 +20,7 @@ public class UploadFileServiceImpl implements IUploadFileService{
 
 	private final Logger log =LoggerFactory.getLogger(UploadFileServiceImpl.class);
 
-	private final static String DIRECTORIO_UPLOAD="uploads";
+	private static final String DIRECTORIO_UPLOAD="uploads";
 
 	@Override
 	public Resource cargar(String nombreFoto) throws MalformedURLException {
@@ -49,11 +49,10 @@ public class UploadFileServiceImpl implements IUploadFileService{
 	@Override
 	public boolean eliminar(String nombreFoto) {
 		if(nombreFoto != null && nombreFoto.length()>0) {
-			Path rutaFotoAnterior=Paths.get("uploads").resolve(nombreFoto).toAbsolutePath();
+			Path rutaFotoAnterior=Paths.get(DIRECTORIO_UPLOAD).resolve(nombreFoto).toAbsolutePath();
 			File archivoFotoAnterior=rutaFotoAnterior.toFile();
 			if(archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
-				archivoFotoAnterior.delete();
-				return true;
+				return archivoFotoAnterior.delete();
 			}
 		}
 		return false;

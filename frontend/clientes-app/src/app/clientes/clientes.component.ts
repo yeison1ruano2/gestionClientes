@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 import { tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from './detalle/modal.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-clientes',
@@ -18,7 +19,8 @@ export class ClientesComponent implements OnInit {
 
   constructor(private clienteSrvice:ClienteService,
     private activatedRoute:ActivatedRoute,
-    private modalService:ModalService) { }
+    private modalService:ModalService,
+    public authService:AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe( params =>{
@@ -29,7 +31,6 @@ export class ClientesComponent implements OnInit {
       this.clienteSrvice.getClientes(page).pipe(
         tap((response:any) =>{
           (response.content as Cliente[]).forEach(cliente => {
-            console.log(cliente.nombre);
           });
         })
       ).subscribe(

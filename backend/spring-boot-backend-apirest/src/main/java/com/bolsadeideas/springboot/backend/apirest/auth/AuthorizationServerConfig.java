@@ -65,7 +65,4 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLICA);
 		return jwtAccessTokenConverter;
 	}
-	
-	
-
 }

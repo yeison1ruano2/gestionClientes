@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import * as moment from 'moment';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { Region } from './region';
 
