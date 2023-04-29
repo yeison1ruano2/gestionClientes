@@ -18,6 +18,7 @@
             <th scope="text-center">Apellido</th>
             <th scope="text-center">Email</th>
             <th scope="text-center">Fecha</th>
+            <th scope="text-center" *ngIf="authService.hasRole('ROLE_ADMIN')">Crear factura</th>
             <th scope="text-center" *ngIf="authService.hasRole('ROLE_ADMIN')">Editar</th>
             <th scope="text-center" *ngIf="authService.hasRole('ROLE_ADMIN')">Eliminar</th>
           </tr>
@@ -32,6 +33,7 @@
             <td>{{cliente.apellido | uppercase}}</td>
             <td>{{cliente.email}}</td>
             <td>{{cliente.fecha | date:"fullDate"}}</td>
+            <td *ngIf="authService.hasRole('ROLE_ADMIN')"><button type="button" class="btn btn-primary btn-sm" [routerLink]="['/facturas/form', cliente.id]">Crear factura</button></td>
             <td *ngIf="authService.hasRole('ROLE_ADMIN')"><button type="button" name="editar" [routerLink]="['/clientes/form',cliente.id]" class="btn btn-success btn-sm">Editar</button></td>
             <td *ngIf="authService.hasRole('ROLE_ADMIN')"><button type="button" name="eliminar" (click)='deleteCliente(cliente)' class="btn btn-danger btn-sm">Eliminar</button></td>
           </tr>

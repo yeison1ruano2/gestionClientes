@@ -61,6 +61,7 @@ public class Cliente  implements Serializable{
 	@NotNull(message="la región no puede ser vacia")
 	private Region region;
 	
+	@JsonIgnoreProperties({"cliente","hibernateLazyInitializer","handler"})
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<Factura> facturas;
 	

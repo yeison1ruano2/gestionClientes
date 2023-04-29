@@ -29,6 +29,36 @@
               <img *ngIf="cliente?.foto" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}" class="img-thumbnail rounded">
             </div>
           </div>
+          <div class="row mt-3">
+            <td *ngIf="authService.hasRole('ROLE_ADMIN')"><button type="button" class="btn btn-success btn-sm" [routerLink]="['/facturas/form', cliente.id]">Crear factura</button></td>
+          </div>
+          <div class="row mt-3">
+            <div class="alert alert-info my-4" *ngIf="cliente.facturas.length == 0">
+              No hay facturas asignadas para el cliente {{cliente.nombre}} {{cliente.apellido}}
+            </div>
+            <table class="table table-bordered table striped mny-4" *ngIf="cliente.facturas.length > 0">
+              <thead>
+                <tr>
+                  <th>Folio</th>
+                  <th>Descripción</th>
+                  <th>Fecha</th>
+                  <th>Total</th>
+                  <th>Detalle</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let factura of cliente.facturas">
+                  <td>{{factura.id}}</td>
+                  <td>{{factura.descripcion}}</td>
+                  <td>{{factura.fecha}}</td>
+                  <td>{{factura.total}}</td>
+                  <td><button class="btn btn-primary btn-sm" type="button" [routerLink]="['/facturas',factura.id]">Ver</button></td>
+                  <td><button class="btn btn-danger btn-sm" (click)="deleteFactura(factura)" type="button">Eliminar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
