@@ -4,7 +4,11 @@ import { ClienteService } from '../services/cliente.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { flatMap, map } from 'rxjs/operators';
+import { FacturaService } from '../services/factura.service';
+import { Producto } from './models/producto';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { ItemFactura } from './models/item-factura';
 
 @Component({
   selector: 'app-facturas',
@@ -14,19 +18,13 @@ export class FacturasComponent implements OnInit {
   titulo: string = 'Nueva Factura';
   factura: Factura = new Factura();
   autoCompleteControl = new FormControl('');
-  productos: string[] = [
-    'Mesa',
-    'Tablet',
-    'Sony',
-    'Samsung',
-    'Tv LG',
-    'Bicicleta',
-  ];
-  productosFiltrados!: Observable<string[]>;
+  productos: string[] = [];
+  productosFiltrados!: Observable<Producto[]>;
 
   constructor(
     private clienteServices: ClienteService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private facturaService: FacturaService
   ) {}
 
   ngOnInit(): void {
@@ -37,16 +35,28 @@ export class FacturasComponent implements OnInit {
       });
     });
     this.productosFiltrados = this.autoCompleteControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value || ''))
+      map((value: any) => (typeof value == 'string' ? value : value.nombre)),
+      flatMap((value) => (value ? this._filter(value || '') : []))
     );
   }
 
-  private _filter(value: string): string[] {
+  private _filter(value: string): Observable<Producto[]> {
     const filterValue = value.toLowerCase();
 
-    return this.productos.filter((option) =>
-      option.toLowerCase().includes(filterValue)
-    );
+    return this.facturaService.cargarProductos(filterValue);
+  }
+
+  mostrarNombre(producto?: Producto): string | undefined {
+    return producto ? producto.nombre : undefined;
+  }
+
+  seleccionarProducto(event: MatAutocompleteSelectedEvent): void {
+    let producto = event.option.value as Producto;
+    let nuevoItem = new ItemFactura();
+    nuevoItem.producto = producto;
+    this.factura.items?.push(nuevoItem);
+    this.autoCompleteControl.setValue('');
+    event.option.focus();
+    event.option.deselect();
   }
 }
