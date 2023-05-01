@@ -6,7 +6,7 @@
         Volver
       </button>
     </h4>
-    <form>
+    <form #facturaForm="ngForm">
       <div class="form-group row mb-3" *ngIf="factura.cliente">
         <label for="cliente" class="col-sm-2 col-form-label">Cliente</label>
         <div class="col-sm-6">
@@ -28,10 +28,18 @@
         <div class="col-sm-6">
           <input
             type="text"
+            required
+            #descripcion="ngModel"
             class="form-control"
             name="descripcion"
             [(ngModel)]="factura.descripcion"
           />
+          <div
+            class="alert alert-danger mt-3"
+            *ngIf="descripcion.invalid && descripcion.touched"
+          >
+            La descripción es requerida.
+          </div>
         </div>
       </div>
 
@@ -69,6 +77,12 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
+          <div
+            class="alert alert-danger mt-3"
+            *ngIf="autoCompleteControl.invalid && facturaForm.submitted"
+          >
+            La factura no puede no tener líneas!
+          </div>
         </div>
       </div>
 
@@ -130,6 +144,7 @@
             value="Crear Factura"
             (click)="create()"
             class="btn btn-success mt-3"
+            [disabled]="facturaForm.form.invalid || factura.items.length == 0"
           />
         </div>
       </div>

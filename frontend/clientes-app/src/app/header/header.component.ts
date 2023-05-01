@@ -23,6 +23,7 @@ export class HeaderComponent {
       timer: 1500,
     });
     this.authService.logout();
+    //this.router.navigate(['/login']);
     location.reload();
   }
 }
