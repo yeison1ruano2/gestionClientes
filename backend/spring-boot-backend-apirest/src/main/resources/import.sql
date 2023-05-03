@@ -1,14 +1,14 @@
-INSERT INTO regiones (id,nombre) VALUES (1,'Sudam√©rica');
-INSERT INTO regiones (id,nombre) VALUES (2,'Centroam√©rica');
-INSERT INTO regiones (id,nombre) VALUES (3,'Norteam√©rica');
+INSERT INTO regiones (id,nombre) VALUES (1,'SudamÈrica');
+INSERT INTO regiones (id,nombre) VALUES (2,'CentroamÈrica');
+INSERT INTO regiones (id,nombre) VALUES (3,'NorteamÈrica');
 INSERT INTO regiones (id,nombre) VALUES (4,'Europa');
 INSERT INTO regiones (id,nombre) VALUES (5,'Asia');
 INSERT INTO regiones (id,nombre) VALUES (6,'Africa');
-INSERT INTO regiones (id,nombre) VALUES (7,'Ocean√≠a');
-INSERT INTO regiones (id,nombre) VALUES (8,'Ant√°rtida');
+INSERT INTO regiones (id,nombre) VALUES (7,'OceanÌa');
+INSERT INTO regiones (id,nombre) VALUES (8,'Ant·rtida');
 
 /* Populate tabla clientes */
-INSERT INTO clientes (nombre, apellido, email, fecha, region_id) VALUES('Andr√©s', 'Guzm√°n', 'profesor@bolsadeideas.com', '2018-01-01',1);
+INSERT INTO clientes (nombre, apellido, email, fecha, region_id) VALUES('AndrÈs', 'Guzm·n', 'profesor@bolsadeideas.com', '2018-01-01',1);
 INSERT INTO clientes (nombre, apellido, email, fecha, region_id) VALUES('Mr. John', 'Doe', 'john.doe@gmail.com', '2018-01-02',2);
 INSERT INTO clientes (nombre, apellido, email, fecha, region_id) VALUES('Linus', 'Torvalds', 'linus.torvalds@gmail.com', '2018-01-03',4);
 INSERT INTO clientes (nombre, apellido, email, fecha, region_id) VALUES('Rasmus', 'Lerdorf', 'rasmus.lerdorf@gmail.com', '2018-01-04',4);

@@ -11,7 +11,7 @@ import swal from 'sweetalert2';
 export class HeaderComponent {
   titulo: string = 'App Angular';
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService) {}
 
   logout(): void {
     let nombre = this.authService.usuario.nombre;
@@ -23,7 +23,6 @@ export class HeaderComponent {
       timer: 1500,
     });
     this.authService.logout();
-    //this.router.navigate(['/login']);
     location.reload();
   }
 }

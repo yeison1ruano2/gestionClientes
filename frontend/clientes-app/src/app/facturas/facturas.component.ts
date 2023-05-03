@@ -112,7 +112,7 @@ export class FacturasComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-      this.router.navigate(['/clientes']);
+      this.router.navigate(['/facturas', factura.id]);
     });
   }
 }
